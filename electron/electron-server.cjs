@@ -47,7 +47,7 @@ if (fs.existsSync(p + '/settings.json')) {
 }
 
 // Init ChatGPT
-ChatGPT.init(settings.chatgpt_api_key);
+ChatGPT.init(settings.chatgpt_api_key, settings.temperature);
 
 // Init Local LLM
 LocalLLM.init(settings.llm_api_address);

@@ -3,11 +3,13 @@ const { Configuration, OpenAIApi } = require("openai");
 class ChatGPT {
     static openai;
 
-    static init(api_key) {
+    static init(api_key, temperature) {
 
         let configuration = new Configuration({
             apiKey: api_key
         });        
+        
+        this.temperature = temperature;
         
         ChatGPT.openai = new OpenAIApi(configuration);
     }
@@ -45,9 +47,9 @@ class ChatGPT {
        
         const completion = await ChatGPT.openai.createChatCompletion({
                 //model: "gpt-3.5-turbo",
-                model: "gpt-4-1106-preview",
+                model: "gpt-4.1-mini",
                 messages: var_msgs,
-                temperature: 0.5
+                temperature: this.temperature
         });
         
         console.log(completion);
